@@ -1,15 +1,4 @@
-# chinese IPS: route server 'I' at 192.36.148.17:
-# python dns-holdon.py -s 192.36.148.17 -n m.pvta.com -t 15
-# WARNING: No route found for IPv6 destination :: (no default route?)
-# 0.0929789543152
-# 0.0370810031891
-# DNS Ans
-# m.pvta.com is actually at i.gtld-servers.net.
-
-#https://www.ultratools.com/tools/asnInfoResult?domainName=222.73.128.165
-
-# python dns-holdon.py -s 130.245.145.6 -n falun.com -t 15
-#answers, nonanswers = sr(IP(dst='8.8.8.8')/UDP(dport=53)/DNS(rd=1,qd=DNSQR(qname='falun.com')), verbose=0, timeout=15, multi=True)
+# example usage: python dns-holdon.py -s 130.245.145.6 -n falun.com -t 15
 import argparse
 from scapy.all import *
 import time
@@ -51,5 +40,3 @@ for answer in answers:
         # answer is a tuple.  Last entry in the tuple contains
         # the dns record, which contains the actual response.
         print args.hostname + ' is actually at ' + answer[-1][DNSRR].rdata
-#print answer.IP
-#print answered[DNS][1]
