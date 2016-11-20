@@ -12,15 +12,13 @@
 #answers, nonanswers = sr(IP(dst='8.8.8.8')/UDP(dport=53)/DNS(rd=1,qd=DNSQR(qname='falun.com')), verbose=0, timeout=15, multi=True)
 import argparse
 from scapy.all import *
-import pdb
 import time
-import math
 
 # Prepare the 3 required params
 parser = argparse.ArgumentParser()
 parser.add_argument("-s", "--server-ip", default="130.245.145.6", dest="server", help="IP of DNS server", required=True)
 parser.add_argument("-n", "--hostname", default="falun.com", dest="hostname", help="The URL that you wish to perform a DNS lookup for", required=True)
-parser.add_argument("-t", "--timeout", default=5, dest="timeout", help="The amount of time (in seconds) to wait for a real response", type=float, required=True)
+parser.add_argument("-t", "--timeout", default=15, dest="timeout", help="The amount of time (in seconds) to wait for a real response", type=float, required=True)
 args = parser.parse_args()
 
 # First, send a non-sensitive query to a safe DNS resolver and pull the RTT and TTL for later
